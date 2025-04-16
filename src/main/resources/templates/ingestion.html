@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Ingestion Tool</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #444;
+    }
+
+    select,
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    .button {
+      margin-top: 2rem;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-group {
+      margin-top: 1rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Data Ingestion Tool</h2>
+
+    <label for="sourceType">Select Source:</label>
+    <select id="sourceType">
+      <option value="ClickHouse">ClickHouse</option>
+      <option value="FlatFile">Flat File</option>
+    </select>
+
+    <div id="clickhouseForm">
+      <div class="form-group">
+        <label>Host:</label>
+        <input type="text" id="chHost" placeholder="e.g. localhost"/>
+      </div>
+      <div class="form-group">
+        <label>Port:</label>
+        <input type="text" id="chPort" placeholder="e.g. 8123"/>
+      </div>
+      <div class="form-group">
+        <label>Database:</label>
+        <input type="text" id="chDatabase" placeholder="e.g. default"/>
+      </div>
+      <div class="form-group">
+        <label>User:</label>
+        <input type="text" id="chUser" placeholder="e.g. default"/>
+      </div>
+      <div class="form-group">
+        <label>JWT Token:</label>
+        <input type="text" id="chToken" placeholder="Enter JWT token"/>
+      </div>
+    </div>
+
+    <div id="flatfileForm" class="hidden">
+      <div class="form-group">
+        <label>Upload CSV File:</label>
+        <input type="file" id="csvFile" accept=".csv"/>
+      </div>
+      <div class="form-group">
+        <label>Delimiter:</label>
+        <input type="text" id="delimiter" placeholder="e.g. , or ;"/>
+      </div>
+    </div>
+
+    <button class="button" onclick="submitForm()">Start Ingestion</button>
+  </div>
+
+  <script>
+    const sourceTypeSelect = document.getElementById("sourceType");
+    const clickhouseForm = document.getElementById("clickhouseForm");
+    const flatfileForm = document.getElementById("flatfileForm");
+
+    sourceTypeSelect.addEventListener("change", () => {
+      const selected = sourceTypeSelect.value;
+      if (selected === "ClickHouse") {
+        clickhouseForm.classList.remove("hidden");
+        flatfileForm.classList.add("hidden");
+      } else {
+        clickhouseForm.classList.add("hidden");
+        flatfileForm.classList.remove("hidden");
+      }
+    });
+
+    function submitForm() {
+      const sourceType = sourceTypeSelect.value;
+      if (sourceType === "ClickHouse") {
+        alert("Submit ClickHouse form logic here.");
+      } else {
+        alert("Submit Flat File form logic here.");
+      }
+    }
+  </script>6
+</body>
+</html>
