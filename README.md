@@ -25,9 +25,7 @@ This web-based application facilitates bidirectional data ingestion between Clic
    - **Data Preview**: Preview the first 100 records before ingestion.
 
 ## Setup & Installation
-### Prerequisites
-- Docker (for running ClickHouse locally)
-- Node.js (for frontend)
+### Prerequisite
 - Java (for backend, if using a Java implementation)
 - JWT token for ClickHouse authentication
 
@@ -36,3 +34,37 @@ This web-based application facilitates bidirectional data ingestion between Clic
    ```bash
    git clone https://github.com/your-repo/bidirectional-data-ingestion
    cd bidirectional-data-ingestion
+Configure the ClickHouse connection settings:
+
+Update src/main/resources/application.properties (or equivalent configuration file) with your ClickHouse server details.
+
+**Build the backend:**
+
+bash
+Copy
+Edit
+mvn clean install
+**Start the backend server:**
+
+bash
+Copy
+Edit
+mvn spring-boot:run
+
+
+**Configure the ClickHouse connection settings:**
+
+Update src/main/resources/application.properties (or equivalent configuration file) with your ClickHouse server details.
+
+**Build the backend:**
+
+bash
+Copy
+Edit
+mvn clean install
+**Start the backend server:**
+bash
+Copy
+Edit
+mvn spring-boot:run
+
